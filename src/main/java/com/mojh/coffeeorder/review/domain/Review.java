@@ -38,10 +38,10 @@ public class Review extends BaseTimeEntity {
     private String content;
 
     @Column(nullable = false)
-    private Integer rating;
+    private Long rating;
 
     @Builder
-    public Review(User user, Store store, String content, Integer rating) {
+    public Review(User user, Store store, String content, Long rating) {
         this.user = user;
         this.store = store;
         this.content = content;

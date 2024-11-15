@@ -35,14 +35,14 @@ public class OrderMenu extends BaseTimeEntity {
     private Menu menu;
 
     @Column(nullable = false)
-    private Integer count;
+    private Long count;
 
     @Column(nullable = false, precision = 19, scale = 4)
     private BigDecimal price;
 
 
     @Builder
-    public OrderMenu(Order order, Menu menu, Integer count, BigDecimal price) {
+    public OrderMenu(Order order, Menu menu, Long count, BigDecimal price) {
         this.order = order;
         this.menu = menu;
         this.count = count;
