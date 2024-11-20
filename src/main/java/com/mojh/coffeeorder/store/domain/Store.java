@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -43,12 +43,13 @@ public class Store extends BaseTimeEntity {
     @Column(nullable = false, length = 45)
     private String address;
 
-    @Column(nullable = false, length = 45)
-    private String status;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StoreStatus status;
 
     @Builder
     public Store(Owner owner, String name, Double lat, Double lng,
-                 String address, String status) {
+                 String address, StoreStatus status) {
         this.owner = owner;
         this.name = name;
         this.lat = lat;
