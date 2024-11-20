@@ -1,18 +1,34 @@
 package com.mojh.coffeeorder.store.dto;
 
+import com.mojh.coffeeorder.store.domain.Store;
+import com.mojh.coffeeorder.store.domain.StoreStatus;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StoreResponseDto {
-    public int id;
-    public String name;
-    public String address;
-    public int distance;
+    private Long id;
+    private String name;
+    private String address;
+    private StoreStatus status;
 
-    public StoreResponseDto(int id, String name, String address, int distance) {
+    @Builder
+    public StoreResponseDto(Long id, String name, String address, StoreStatus status) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.distance = distance;
+        this.status = status;
+    }
+
+    public static StoreResponseDto of(Store store) {
+        return StoreResponseDto.builder()
+                               .id(store.getId())
+                               .name(store.getName())
+                               .address(store.getAddress())
+                               .status(store.getStatus())
+                               .build();
     }
 }
