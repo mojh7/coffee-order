@@ -12,16 +12,13 @@ import lombok.NoArgsConstructor;
 public class StoreResponseDto {
     private Long id;
     private String name;
-    private String ownerName;
     private String address;
     private StoreStatus status;
 
     @Builder
-    public StoreResponseDto(Long id, String name, String ownerName,
-                            String address, StoreStatus status) {
+    public StoreResponseDto(Long id, String name, String address, StoreStatus status) {
         this.id = id;
         this.name = name;
-        this.ownerName = ownerName;
         this.address = address;
         this.status = status;
     }
@@ -30,7 +27,6 @@ public class StoreResponseDto {
         return StoreResponseDto.builder()
                                .id(store.getId())
                                .name(store.getName())
-                               .ownerName(store.getOwner().getName())
                                .address(store.getAddress())
                                .status(store.getStatus())
                                .build();
